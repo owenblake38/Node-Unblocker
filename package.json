@@ -1,29 +1,21 @@
 {
-  "name": "node-unblocker",
-  "description": "Web proxy for evading internet censorship",
-  "author": "Nathan Friedly - http://nfriedly.com",
-  "version": "0.8.1",
-  "repository": "git://github.com/nfriedly/node-unblocker.git",
-  "dependencies": {
-    "redis-url": "0.1.x",
-    "redis": "0.8.x",
-    "connect": "2.7.x",
-    "connect-redis": "1.4.x",
-    "iconv": "2.0.x"
-  },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
-  },
-  "main": "server",
-  "devDependencies": {
-    "node-static": "~0.7.2",
-    "tap": "~0.4.6",
-    "hyperquest": "~0.1.8",
-    "concat-stream": "~1.2.0",
-    "taskgroup": "~3.3.2"
-  },
-  "scripts": {
-    "test-performance": "node test/performance.js"
-  }
+	"name": "unblocker","description": "Web proxy for evading internet censorship & general-purpose library for rewriting remote websites.","author": "Nathan Friedly - http://nfriedly.com","version": "1.2.0","repository": "git://github.com/nfriedly/node-unblocker.git","engines": {
+		"node": ">=4.3"
+}
+	,"dependencies": {
+		"async": "^2.0.0","content-type": "^1.0.1","cookie": "^0.3.1","debug": "^2.2.0","iconv-lite": "^0.4.13","lodash": "^4.4.0","mime": "^1.3.4","set-cookie-parser": "^1.0.2","tld": "0.0.2"
+}
+	,"devDependencies": {
+		"concat-stream": "^1.5.1","hyperquest": "^2.0.0","js-beautify": "^1.6.2","jshint": "^2.9.1","math-helpers": "~0.1.0","nodemon": "^1.9.0","tap": "^10.0.0"
+}
+	,"jshintConfig": {
+		"undef": true,"unused": true,"newcap": true,"node": true,"browser": false,"devel": true
+}
+	,"todoJshintConfig": {
+		"strict": true,"camelcase": true
+}
+	,"scripts": {
+		"watch": "nodemon --watch ./ --ignore ./examples --ext js,html,xhtml,json --exec npm run test","test": "npm run jshint && npm run test-spec","pre-commit": "npm run beautify && npm test","beautify": "js-beautify --end-with-newline --replace ./lib/*.js ./test/*.js","jshint": "jshint ./lib ./test","test-spec": "tap test/*spec.js","test-perf": "node test/performance.js"
+}
+	,"license": "AGPL-3.0","main": "lib/unblocker.js"
 }
